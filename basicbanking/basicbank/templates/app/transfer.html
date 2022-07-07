@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'app/css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'app/css/transfer.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>Transfer</title>
+</head>
+<body>
+
+    <!-- navbar -->
+
+    <div class="w3-top">
+        <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+          <a href="{% url 'home'%}" class="w3-bar-item w3-button"><b>SD</b> Bank</a>
+          <!-- Float links to the right. Hide them on small screens -->
+          <div class="w3-right w3-hide-small">
+            <a href="#projects" class="w3-bar-item w3-button">Customers</a>
+            <a href="{% url 'trans' %}" class="w3-bar-item w3-button">Transfer</a>
+            <a href="{% url 'transc' %}" class="w3-bar-item w3-button">Transactions</a>
+            <a href="{% url 'about' %}" class="w3-bar-item w3-button">About</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- navbar -->
+
+      <h1>Transfer Money</h1>
+      <h1 style="text-align: center;">Transfer Money</h1>
+      <h3 style="text-align: center;">The fastest way to send money worldwide.</h3>
+
+      <div class="container">
+          
+
+
+        <form method="post">
+
+          {% if messages %}
+          {% for message in messages %}
+          <p {% if message.tags %} class="alert alert-danger mb-5" {% endif %}>{{message}}</p>
+          {% endfor %}
+       {% endif %}
+
+          {% csrf_token %}
+          <label for="Sender">Sender</label>
+          <select id="Sender" name="email">
+            <option value="select">Select</option>
+            {% for u in user %}
+            <option value="{{u.email}}">{{u.name}} : {{u.email}} [AccBal: {{u.accbal}}]</option>
+            {% endfor %}
+          </select>
+      
+          <label for="amount">Enter Amount</label>
+          <input type="number" id="amount" name="amount" placeholder="Enter the amount" required>
+      
+          <label for="Reciever">Reciever</label>
+          <select id="Reciever" name="rec">
+            <option value="select">Select</option>
+            {% for u in user %}
+            <option value="{{u.email}}">{{u.name}} : {{u.email}}</option>
+            {% endfor %}
+          </select>
+        
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+
+
+
+
+    
+</body>
+</html>
