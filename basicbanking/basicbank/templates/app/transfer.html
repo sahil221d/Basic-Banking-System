@@ -52,9 +52,7 @@
       <h3 style="text-align: center;">The fastest way to send money worldwide.</h3>
 
       <div class="container">
-          
-
-
+        {% csrf_token %}
         <form method="post">
 
           {% if messages %}
@@ -63,7 +61,7 @@
           {% endfor %}
        {% endif %}
 
-          {% csrf_token %}
+        
           <label for="Sender">Sender</label>
           <select id="Sender" name="email">
             <option value="select">Select</option>
