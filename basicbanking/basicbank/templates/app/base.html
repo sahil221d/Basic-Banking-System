@@ -2,20 +2,20 @@
 {% load static %}
 <html lang="en">
 <head>
+  {% block transfer %}{% endblock %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'app/css/index.css' %}">
-    <link rel="stylesheet" href="{% static 'app/css/transfer.css' %}">
+    <link rel="stylesheet" href="{% static 'app/css/index.css'%}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <title>Transfer</title>
+    <title>BasicBankingSystem|{% block title %} {% endblock title%}</title>
+ 
 </head>
-<body>
-
-       <!-- Navbar -->
-       <div class="o-top">
+<body style="background-color:rgb(225, 225, 225);">
+    <!-- Navbar -->
+    <div class="o-top">
         <div class="o-bar o-white o-card" id="myNavbar">
           <a href="{% url 'home'%}" class="o-bar-item o-button o-wide"><b>SD</b> Bank</a>
           
@@ -35,6 +35,11 @@
         </div>
       </div>
 
+
+
+
+
+
       <!-- Sidebar on small screens when clicking the menu icon -->
 <nav class="o-sidebar o-bar-block o-black o-card o-animate-left o-hide-medium o-hide-large" style="display:none" id="mySidebar">
     <a href="javascript:void(0)" onclick="o_close()" class="o-bar-item o-button o-large o-padding-16">Close ×</a>
@@ -44,80 +49,47 @@
     <a href="{% url 'transc' %}" onclick="o_close()" class="o-bar-item o-button">TRANSACTIONS</a>
     <a href="{% url 'home' %}#contact" onclick="o_close()" class="o-bar-item o-button">CONTACT</a>
   </nav>
+  
+    <!-- Navbar ends -->
+  
 
-      <!-- navbar -->
-
-      <h1>Transfer Money</h1>
-      <h1 style="text-align: center;">Transfer Money</h1>
-      <h3 style="text-align: center;">The fastest way to send money worldwide.</h3>
-
-      <div class="container">
-          
+    {% block main-content %} {% endblock main-content%}
 
 
-        <form method="post">
-
-          {% if messages %}
-          {% for message in messages %}
-          <p {% if message.tags %} class="alert alert-danger mb-5" {% endif %}>{{message}}</p>
-          {% endfor %}
-       {% endif %}
-
-          {% csrf_token %}
-          <label for="Sender">Sender</label>
-          <select id="Sender" name="email">
-            <option value="select">Select</option>
-            {% for u in user %}
-            <option value="{{u.email}}">{{u.name}} : {{u.email}} [AccBal: {{u.accbal}}]</option>
-            {% endfor %}
-          </select>
-      
-          <label for="amount">Enter Amount</label>
-          <input type="number" id="amount" name="amount" placeholder="Enter the amount" required>
-      
-          <label for="Reciever">Reciever</label>
-          <select id="Reciever" name="rec">
-            <option value="select">Select</option>
-            {% for u in user %}
-            <option value="{{u.email}}">{{u.name}} : {{u.email}}</option>
-            {% endfor %}
-          </select>
-        
-          <input type="submit" value="Submit">
-        </form>
-      </div>
 
 
-      
+    <!-- Footer -->
+    {% block footer %}   {% endblock %}
+
+    <!-- Footer ends -->
+
+
+
     <script>
 
-      function onClick(element) {
-        document.getElementById("img01").src = element.src;
-        document.getElementById("modal01").style.display = "block";
-        var captionText = document.getElementById("caption");
-        captionText.innerHTML = element.alt;
-      }
-      
-      
-      
-      var mySidebar = document.getElementById("mySidebar");
-      
-      function o_open() {
-        if (mySidebar.style.display === 'block') {
-          mySidebar.style.display = 'none';
-        } else {
-          mySidebar.style.display = 'block';
+        function onClick(element) {
+          document.getElementById("img01").src = element.src;
+          document.getElementById("modal01").style.display = "block";
+          var captionText = document.getElementById("caption");
+          captionText.innerHTML = element.alt;
         }
-      }
-      
-      
-      function o_close() {
-          mySidebar.style.display = "none";
-      }
-      </script>
-
-
-
-    
+        
+        
+        
+        var mySidebar = document.getElementById("mySidebar");
+        
+        function o_open() {
+          if (mySidebar.style.display === 'block') {
+            mySidebar.style.display = 'none';
+          } else {
+            mySidebar.style.display = 'block';
+          }
+        }
+        
+        
+        function o_close() {
+            mySidebar.style.display = "none";
+        }
+        </script>
 </body>
 </html>

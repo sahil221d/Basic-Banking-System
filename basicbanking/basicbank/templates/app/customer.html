@@ -1,57 +1,9 @@
-<!DOCTYPE html>
-{% load static%}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'app/css/index.css' %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-
-    <style>
-        #customers {
-          font-family: Arial, Helvetica, sans-serif;
-          border-collapse: collapse;
-          width: 100%;
-        }
-        
-        #customers td, #customers th {
-          border: 1px solid #ddd;
-          padding: 8px;
-        }
-        
-        #customers tr:nth-child(even){background-color: #f2f2f2;}
-        
-        #customers tr:hover {background-color: #ddd;}
-        
-        #customers th {
-          padding-top: 12px;
-          padding-bottom: 12px;
-          text-align: left;
-          background-color: #bfbab0;
-          color: white;
-        }
-        </style>
-    <title>Customers</title>
-</head>
-<body>
-    <!-- Navbar -->
-    <div class="w3-top">
-        <div class="w3-bar w3-white w3-wide w3-padding w3-card">
-          <a href="{% url 'home'%}" class="w3-bar-item w3-button"><b>SD</b> Bank</a>
-          <!-- Float links to the right. Hide them on small screens -->
-          <div class="w3-right w3-hide-small">
-            <a href="#projects" class="w3-bar-item w3-button">Customers</a>
-            <a href="{% url 'trans' %}" class="w3-bar-item w3-button">Transfer</a>
-            <a href="{% url 'transc' %}" class="w3-bar-item w3-button">Transactions</a>
-            <a href="{ % url 'about' %}" class="w3-bar-item w3-button">About</a>
-          </div>
-        </div>
-      </div>
-
-<!-- Customer Details -->
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %} Customer {% endblock title %}
+     
+  
+{% block main-content %}
 
 <h1>Customer Details</h1>
 
@@ -78,10 +30,8 @@
 
 
 
-   <!-- Footer -->
-   <footer class="w3-center w3-black w3-padding-16">
-    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">SD Bank</a></p>
-    </footer>
+{% endblock main-content %}
+  
+{% block footer %} {% endblock %}
 
-</body>
-</html>
+   
