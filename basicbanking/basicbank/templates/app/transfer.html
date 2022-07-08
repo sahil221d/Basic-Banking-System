@@ -52,9 +52,9 @@
       <h3 style="text-align: center;">The fastest way to send money worldwide.</h3>
 
       <div class="container">
-        {% csrf_token %}
+        
         <form method="post">
-
+          {% csrf_token %}
           {% if messages %}
           {% for message in messages %}
           <p {% if message.tags %} class="alert alert-danger mb-5" {% endif %}>{{message}}</p>
