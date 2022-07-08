@@ -13,6 +13,8 @@ SECRET_KEY = os.environ['SECRET_KEY']
 DEBUG = True
 
 ALLOWED_HOSTS = ["bscbank.herokuapp.com", "localhost"]
+CSRF_TRUSTED_ORIGINS = ['https://bscbank.herokuapp.com/']
+
 
 
 # Application definition
